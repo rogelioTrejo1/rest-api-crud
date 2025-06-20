@@ -1,0 +1,26 @@
+// Iconos
+.icon-rotate {
+  display: inline-block;
+  transition: transform .5s ease;
+}
+.icon-rotate:hover {
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+
+// animacion de Toreo
+.seccion-toggle {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+}
+.seccion-oculta {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
+

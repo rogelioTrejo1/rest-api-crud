@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "fullname": "Rogelio Trejo Cuevas",
+    "prefix": "ING",
+    "phone": "4492564117",
+    "email": "trejorogelio@electroserviciosind.com",
+    "text": "Ced. Prof. 3501352 Ingeniero Electrico"
+  },
+  {
+    "id": 2,
+    "fullname": "Rogelio Trejo Estrada",
+    "prefix": "ING",
+    "phone": "4492316585",
+    "email": "rogelio.t.e@electroserviciosind.com",
+    "text": "Ingeniero en Sistemas Computacionales"
+  }
+]
