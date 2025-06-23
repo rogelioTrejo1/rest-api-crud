@@ -15,10 +15,18 @@ export function useEmployee(searchParams: string) {
   useEffect(() => {
     const queryParams = new URLSearchParams(searchParams);
 
-    const idEmployee = queryParams.has('id') ? +queryParams.get('id')! : 0;
+    const idEmployee = queryParams.has('id') ? +queryParams.get('id')! : 1;
 
     getEmployeesById(idEmployee)
-      .then(employee => setEmployee(employee));
+      .then(employee => setEmployee(employee))
+      .catch(() => setEmployee({
+        id: 0,
+        email:"",
+        fullname: "",
+        phone: "",
+        prefix: "",
+        text:""
+      }));
 
   }, [searchParams]);
 
