@@ -1,13 +1,17 @@
 // Keys
 import { API_REST } from '@/config/keys.config';
 
+// Interfaces y Tipos
+import { ApiResponse } from '@/services/interface/ApiResponce';
+
+// Definción de variables globales 
 const URL_API = `${API_REST}/employees`;
 
 /**
  *
  * @returns
  */
-export async function getAllEmployees(): Promise<Employee[]> {
+export async function getAllEmployees(): Promise<ApiResponse<Employee[]>> {
   const resp = await fetch(URL_API);
 
   if (!resp.ok)
@@ -21,7 +25,7 @@ export async function getAllEmployees(): Promise<Employee[]> {
  * @param id
  * @returns
  */
-export async function getEmployeesById(id: number): Promise<Employee> {
+export async function getEmployeesById(id: number): Promise<ApiResponse<Employee>> {
   const resp = await fetch(`${URL_API}/${id}`);
 
   if (!resp.ok) {

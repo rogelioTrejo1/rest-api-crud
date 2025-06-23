@@ -18,7 +18,7 @@ export function useEmployee(searchParams: string) {
     const idEmployee = queryParams.has('id') ? +queryParams.get('id')! : 1;
 
     getEmployeesById(idEmployee)
-      .then(employee => setEmployee(employee))
+      .then(({ data: employee }) => setEmployee(employee))
       .catch(() => setEmployee({
         id: 0,
         email:"",
