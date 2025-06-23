@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProspectController;
 use App\Models\Employee;
 
 Route::get('/user', function (Request $request) {
@@ -21,3 +22,7 @@ Route::get('/employees', [EmployeeController::class, 'index']);
 Route::get('/employees/{id}', [EmployeeController::class, 'show']);
 Route::post('/employees', [EmployeeController::class, 'store']);
 Route::delete('/employees/{id}', [Employee::class, 'destroy']);
+
+// Rutas de prospectos
+Route::get('/prospects', [ProspectController::class, 'index']);
+Route::post('/prospects', [ProspectController::class, 'store']);

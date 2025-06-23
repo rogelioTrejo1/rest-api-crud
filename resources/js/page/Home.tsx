@@ -11,6 +11,7 @@ import { Img, IFrame, Pensamientos, Servicio } from "../components/Components";
 
 //Imagenes
 import LogoPrincipal from "../images/LogotipoFinal.png";
+import FormContact from "@/components/FormContact";
 
 const Home = () => {
   // Manejo del Estado de la aplicación
@@ -92,9 +93,9 @@ const Home = () => {
               <div className="w-100">
                 <p className="h3 text-center">
                   Comunicate con nosotros
-                  {/* <button onClick={handleClickSección} className="btn btn-secondary btn-sm ms-1">
-                                    <i className="bi bi-arrow-repeat icon-rotate fs-6"></i>
-                                </button> */}
+                  <button onClick={handleClickSección} className="btn btn-secondary btn-sm ms-1">
+                    <i className="bi bi-arrow-repeat icon-rotate fs-6"></i>
+                  </button>
                 </p>
                 <section className={`seccion-toggle ${habilitarFormulario ? 'seccion-oculta' : ''}`}>
                   <p className="text-center">Gaspar de la Funte #317 Villas de Nuestra Señora de la Asunción, aguascalientes, Aguacalientes, México</p>
@@ -126,62 +127,7 @@ const Home = () => {
                   </div>
                 </section>
                 <section className={`seccion-toggle ${!habilitarFormulario ? 'seccion-oculta' : ''}`}>
-                  <form id="form-contact">
-                    <div className="mb-3">
-                      <label htmlFor="floatingEmail" className="form-label">Correo electrónico</label>
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="floatingEmail"
-                        placeholder="Escribe tu correo electrónico"
-                        autoComplete="off"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="floatingPassword" className="form-label">Telefono *</label>
-                      <input
-                        type="tel"
-                        className="form-control"
-                        id="floatingPassword"
-                        placeholder="Escribe tu telefono"
-                        autoComplete="off"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="floatingMessage" className="form-label">Mensaje *</label>
-                      <textarea
-                        name="message"
-                        id="floatingMessage"
-                        className="form-control"
-                        placeholder="Escribe en que te podemos ayudar"
-                        autoComplete="off"
-                        rows={5}
-                        required
-                      ></textarea>
-                    </div>
-                    <div className="mb-3">
-                      <div className="form-check form-switch mb-2">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="flexSwitchCheckDefault"
-                          required
-                        />
-                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
-                          ¿Autoriza el uso de su telefono para comunicacion de whatsapp?
-                        </label>
-                      </div>
-                      {/* Crear un boton chebox que autoriza el uso del telefono para comunicacion de whatsapp */}
-                      <button
-                        type="submit"
-                        className="btn btn-lg btn-warning w-100"
-                      >
-                        Enviar
-                      </button>
-                    </div>
-                  </form>
+                  <FormContact />
                 </section>
               </div>
             </div>
