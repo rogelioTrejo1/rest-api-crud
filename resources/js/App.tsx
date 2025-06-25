@@ -2,9 +2,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Paginas
-import Home from './page/Home';
-import TargetaPresentacion from './page/TargetaPresentacion';
-import NotFound from './page/NotFound';
+import Home from '@/page/Home';
+import TargetaPresentacion from '@/page/TargetaPresentacion';
+import NotFound from '@/page/NotFound';
 
 /**
  * 

@@ -21,11 +21,11 @@ class ProspectController extends Controller
     {
         try {
             $validated = $request->validate([
-                'fullname' => 'require|string',
-                'email' => 'require|email',
-                'phone' => 'optional|string',
-                'message' => 'require|string',
-                'whassapp_comunication' => 'optional|boolean'
+                'fullname' => 'required|string',
+                'email' => 'required|email',
+                'phone' => 'nullable|string',
+                'message' => 'required|string',
+                'whatssapp_comunication' => 'nullable|boolean',
             ]);
 
             $newProspect = Prospect::create($validated);

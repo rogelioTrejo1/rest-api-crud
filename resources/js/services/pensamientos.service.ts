@@ -1,6 +1,6 @@
 //Importacion de imagenes
-import Mision from '../images/Mision.jpg';
-import Vision from '../images/Vision.jpg';
+import Mision from '@Images/Mision.jpg';
+import Vision from '@Images/Vision.jpg';
 
 const pensamientos: IPensamientos[] = [
     {

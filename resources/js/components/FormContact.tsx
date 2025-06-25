@@ -1,16 +1,37 @@
+// Dependencias
+import { useState, FormEvent, useRef } from 'react';
+
+// Hooks
+import { useProspect, type CreateProspect } from '@/hooks/useProspect';
+
+
 /**
  * 
  * @returns 
  */
 function FormContact() {
+  const [prospect, setPropect] = useState<CreateProspect>();
+  const formContact = useRef<HTMLFormElement>(null);
+  const { loading: loadingProspect, error: errorProspect, createProspect } = useProspect();
+
+  /**
+   *
+   * @param e
+   */
+  const handleSubmitFormContact = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(e.target);
+  };
+
   return (
-    <form id="form-contact">
+    <form id="form-contact" ref={formContact} onSubmit={handleSubmitFormContact}>
       <div className="mb-3">
         <label htmlFor="fullname-input" className="form-label">Nombre Completo *</label>
         <input
           type="text"
           className="form-control"
           id="fullname-input"
+          name='fullname'
           placeholder="Escribe tu nombre completo"
           autoComplete="off"
           required
@@ -22,17 +43,20 @@ function FormContact() {
           type="email"
           className="form-control"
           id="floatingEmail"
+          name='email'
           placeholder="Escribe tu correo electrónico"
           autoComplete="off"
           required
+
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="floatingPassword" className="form-label">Telefono *</label>
+        <label htmlFor="phoneElement" className="form-label">Telefono *</label>
         <input
           type="tel"
           className="form-control"
-          id="floatingPassword"
+          id="phoneElement"
+          name='phone'
           placeholder="Escribe tu telefono"
           autoComplete="off"
           required
@@ -56,7 +80,7 @@ function FormContact() {
             className="form-check-input"
             type="checkbox"
             id="flexSwitchCheckDefault"
-            required
+            name='whatssapp_comunication'
           />
           <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
             ¿Autoriza el uso de su telefono para comunicacion de whatsapp?

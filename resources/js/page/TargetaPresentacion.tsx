@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 // Imagenes
-import logo from '../images/logo.png';
+import logo from '@Images/logo.png';
 
 // Utileria
-import { formatNumber } from '../util/formatNumber.util';
+import { formatNumber } from '@Util/formatNumber.util';
 
-import { useEmployee } from '../hooks/useEmployee';
+import { useEmployee } from '@Hooks/useEmployee';
 
 // Dependencias
 export default function TargetaPresentacion() {

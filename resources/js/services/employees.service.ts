@@ -1,8 +1,8 @@
 // Keys
-import { API_REST } from '@/config/keys.config';
+import { API_REST } from '@Config/keys.config';
 
 // Interfaces y Tipos
-import { ApiResponse } from '@/services/interface/ApiResponce';
+import { ApiResponse } from '@Services/interface/ApiResponce';
 
 // Definción de variables globales 
 const URL_API = `${API_REST}/employees`;

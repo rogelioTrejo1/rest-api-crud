@@ -1,13 +1,13 @@
 //importtacion de imagenes
-import InstalacionesMedianayBaja from '../images/Intalaciones Media y Baja.jpg';
-import MantenimientoSubestacion from '../images/Mantenimiento a Subestacion.jpg';
-import PruebasTransformadores from '../images/Pruebas a transformadores.jpg';
-import Proyectos from '../images/Proyectos.jpg';
-import SistemasTierra from '../images/Sistemas de tierra.jpeg';
-import Cortocircuito from '../images/Cortocircuito.jpg';
-import EquiposBonbeo from '../images/EQUIPOS DE BOMBEO.jpg';
-import Bombas from '../images/Bombas.jpeg';
-import Compresores from '../images/COMPRESORES.jpg';
+import InstalacionesMedianayBaja from '@Images/Intalaciones Media y Baja.jpg';
+import MantenimientoSubestacion from '@Images/Mantenimiento a Subestacion.jpg';
+import PruebasTransformadores from '@Images/Pruebas a transformadores.jpg';
+import Proyectos from '@Images/Proyectos.jpg';
+import SistemasTierra from '@Images/Sistemas de tierra.jpeg';
+import Cortocircuito from '@Images/Cortocircuito.jpg';
+import EquiposBonbeo from '@Images/EQUIPOS DE BOMBEO.jpg';
+import Bombas from '@Images/Bombas.jpeg';
+import Compresores from '@Images/COMPRESORES.jpg';
 
 export const serviIndustrial: Servicios[] = [
     {

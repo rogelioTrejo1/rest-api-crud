@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 
 // Imagenes
-import logo from '../images/LogotipoFinal.png';
+import logo from '@Images/LogotipoFinal.png';
 
 /**
  *

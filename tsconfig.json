@@ -23,6 +23,27 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@Components/*": [
+        "./components/*"
+      ],
+      "@Config/*": [
+        "./config/*"
+      ],
+      "@Css/*": [
+        "./css/*"
+      ],
+      "@Hooks/*": [
+        "./hooks/*"
+      ],
+      "@Images/*": [
+        "./images/*"
+      ],
+      "@Services/*": [
+        "./services/*"
+      ],
+      "@Util/*": [
+        "./util/*"
       ]
     }
   },

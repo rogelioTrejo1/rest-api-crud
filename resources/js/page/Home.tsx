@@ -2,16 +2,16 @@
 import { useState } from 'react';
 
 // Services
-import pensamientos from '../services/pensamientos.service';
-import { ingElectromecanica, serviIndustrial } from '../services/servicios.service';
+import pensamientos from '@Services/pensamientos.service';
+import { ingElectromecanica, serviIndustrial } from '@Services/servicios.service';
 
 // Componentes
-import Header from '../components/Header';
-import { Img, IFrame, Pensamientos, Servicio } from '../components/Components';
+import Header from '@Components/Header';
+import { Img, IFrame, Pensamientos, Servicio } from '@Components/Components';
 
 //Imagenes
-import LogoPrincipal from '../images/LogotipoFinal.png';
-import FormContact from '@/components/FormContact';
+import LogoPrincipal from '@Images/LogotipoFinal.png';
+import FormContact from '@Components/FormContact';
 
 const Home = () => {
   // Manejo del Estado de la aplicación

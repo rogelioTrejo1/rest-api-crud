@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 // Servicios
-import { type Employee, getEmployeesById } from '../services/employees.service';
+import { type Employee, getEmployeesById } from '@Services/employees.service';
 
 /**
  *
