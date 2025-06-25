@@ -1,4 +1,4 @@
-import { CSSProperties, JSX } from "react";
+import { CSSProperties, JSX } from 'react';
 
 /**
  * Img: Se genera un elemento tipo HTMLImageElement para su uso

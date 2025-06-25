@@ -1,17 +1,17 @@
 // Dependencias
-import { useState } from "react";
+import { useState } from 'react';
 
 // Services
-import pensamientos from "../services/pensamientos.service";
-import { ingElectromecanica, serviIndustrial } from "../services/servicios.service";
+import pensamientos from '../services/pensamientos.service';
+import { ingElectromecanica, serviIndustrial } from '../services/servicios.service';
 
 // Componentes
-import Header from "../components/Header";
-import { Img, IFrame, Pensamientos, Servicio } from "../components/Components";
+import Header from '../components/Header';
+import { Img, IFrame, Pensamientos, Servicio } from '../components/Components';
 
 //Imagenes
-import LogoPrincipal from "../images/LogotipoFinal.png";
-import FormContact from "@/components/FormContact";
+import LogoPrincipal from '../images/LogotipoFinal.png';
+import FormContact from '@/components/FormContact';
 
 const Home = () => {
   // Manejo del Estado de la aplicación

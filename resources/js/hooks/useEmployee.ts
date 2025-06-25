@@ -1,5 +1,5 @@
 // Dependencias
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 // Servicios
 import { type Employee, getEmployeesById } from '../services/employees.service';
@@ -21,14 +21,14 @@ export function useEmployee(searchParams: string) {
       .then(({ data: employee }) => setEmployee(employee))
       .catch(() => setEmployee({
         id: 0,
-        email:"",
-        fullname: "",
-        phone: "",
-        prefix: "",
-        text:""
+        email:'',
+        fullname: '',
+        phone: '',
+        prefix: '',
+        text:''
       }));
 
   }, [searchParams]);
 
-  return { employee }
+  return { employee };
 }

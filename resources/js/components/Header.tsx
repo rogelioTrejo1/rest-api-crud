@@ -1,7 +1,7 @@
-import { Img } from "./Components";
+import { Img } from './Components';
 
 // Imagenes
-import Principal from "../images/Principal.jpg";
+import Principal from '../images/Principal.jpg';
 
 const Header = () => (
     <header className="container-fluid p-3">
