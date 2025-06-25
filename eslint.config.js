@@ -1,4 +1,4 @@
-// eslint.config.js (ESM)
+/* eslint-disable no-undef */
 import js from '@eslint/js';
 import tsParser from '@typescript-eslint/parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
@@ -15,7 +15,7 @@ export default [
   {
     ignores: [
       'node_modules',
-      'dist',
+      'publuc/dist',
       '**/*.d.ts'
     ]
   },
