@@ -3,7 +3,7 @@
  * @param phone
  * @returns
  */
-export function formatNumber(phone: string) {
+export function formatNumber(phone?: string) {
   // Valido que exista un numero de telefono
   if (!phone) return 'N/A';
 

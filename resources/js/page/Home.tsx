@@ -126,7 +126,7 @@ const Home = () => {
                     </select>
                   </div>
                 </section>
-                <section className={`seccion-toggle ${!habilitarFormulario ? 'seccion-oculta' : ''}`}>
+                <section className={`seccion-toggle relative ${!habilitarFormulario ? 'seccion-oculta' : ''}`}>
                   <FormContact />
                 </section>
               </div>

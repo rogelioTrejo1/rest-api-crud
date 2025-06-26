@@ -10,6 +10,7 @@ import { type Employee, getEmployeesById } from '@Services/employees.service';
  * @returns
  */
 export function useEmployee(searchParams: string) {
+  const [error, setError] = useState(true);
   const [employee, setEmployee] = useState<Employee>();
 
   useEffect(() => {
@@ -18,17 +19,13 @@ export function useEmployee(searchParams: string) {
     const idEmployee = queryParams.has('id') ? +queryParams.get('id')! : 1;
 
     getEmployeesById(idEmployee)
-      .then(({ data: employee }) => setEmployee(employee))
-      .catch(() => setEmployee({
-        id: 0,
-        email:'',
-        fullname: '',
-        phone: '',
-        prefix: '',
-        text:''
-      }));
+      .then(({ data: employee }) => {
+        setEmployee(employee);
+        setError(false);
+      })
+      .catch(() => setError(true));
 
   }, [searchParams]);
 
-  return { employee };
+  return { employee, error };
 }

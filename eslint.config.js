@@ -66,7 +66,6 @@ export default [
       'semi': ['error', 'always'],
       'quotes': ['error', 'single'],
       'comma-dangle': ['error', 'never'],
-      'space-before-function-paren': ['error', 'never'],
       'no-var': 'error',
       'prefer-const': 'error',
       'no-console': ['warn', { allow: ['warn', 'error'] }],
@@ -74,7 +73,8 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      'jsx-a11y/anchor-is-valid': 'warn'
+      'jsx-a11y/anchor-is-valid': 'warn',
+      "space-before-function-paren": 'off'
     }
   }
 ];

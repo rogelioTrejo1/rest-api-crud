@@ -32,7 +32,7 @@ export type Prospect = {
   id: number;
   fullname: string;
   email: string;
-  phone: string;
+  phone?: string;
   message: string;
   whatssapp_comunication?: boolean;
 };
