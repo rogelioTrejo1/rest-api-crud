@@ -1,5 +1,5 @@
 // Dependencias
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Services
 import pensamientos from '@Services/pensamientos.service';
@@ -17,9 +17,19 @@ const Home = () => {
   // Manejo del Estado de la aplicación
   const [fecha] = useState(new Date());
   const [habilitarFormulario, setHabilitarFormulario] = useState(false);
+  const [section, setSection] = useState<SecctionsNames>('info');
 
-  const handleClickSección = () => setHabilitarFormulario(!habilitarFormulario);
+  // Habilita el formulario, simprey cuando este en la seccion correspondiente
+  useEffect(() => setHabilitarFormulario(section === 'form'), [section]);
 
+  /**
+   *
+   * @returns
+   */
+  const handleChangeSeccion = () => {
+    setSection(prevState => prevState === 'info' ? 'form' : 'info');
+    setHabilitarFormulario(!habilitarFormulario);
+  };
 
   return (
     <>
@@ -88,14 +98,11 @@ const Home = () => {
         {/* Contacto! */}
         <article className="container-fluid" id="Contacto">
           <p className="h3 titulos">Contacto</p>
-          <div className="row mx-2">
+          <div className="row mx-2" style={{ minHeight: '675px' }}>
             <div className="col-lg-5 my-5">
               <div className="w-100">
                 <p className="h3 text-center">
                   Comunicate con nosotros
-                  <button onClick={handleClickSección} className="btn btn-secondary btn-sm ms-1">
-                    <i className="bi bi-arrow-repeat icon-rotate fs-6"></i>
-                  </button>
                 </p>
                 <section className={`seccion-toggle ${habilitarFormulario ? 'seccion-oculta' : ''}`}>
                   <p className="text-center">Gaspar de la Funte #317 Villas de Nuestra Señora de la Asunción, aguascalientes, Aguacalientes, México</p>
@@ -113,7 +120,7 @@ const Home = () => {
                   </p>
                   <p className="h3 text-center">Servicio Industrial</p>
                   <p className="text-center">Estamos a sus ordenes la 24 horas del dia, los 365 dias del año.</p>
-                  <div className="form-group">
+                  <div className="mb-3">
                     <p className="h3 text-center">Horario de Oficina</p>
                     <select className="form-control border-0" defaultValue={fecha.getDay()}>
                       <option value="1">Lunes. 9:00-18:00</option>
@@ -125,9 +132,22 @@ const Home = () => {
                       <option value="0">Domingo. Cerrado</option>
                     </select>
                   </div>
+                  <div className='mb-3'>
+                    <p className='h4'>¿Tu empresa enfrenta algún reto? ¡Queremos escucharte!</p>
+                    <p>Sabemos que cada negocio es único y que los desafíos pueden aparecer en cualquier momento. En <span className='fw-bold fst-italic'>Electroservicios Industriales y Suministros</span>, estamos comprometidos en ayudarte a encontrar soluciones reales y efectivas.</p>
+                    <div className='d-flex justify-content-center'>
+                      <button onClick={handleChangeSeccion} className="btn btn-outline-warning w-75">
+                        Enviar un mensage
+                      </button>
+                    </div>
+                  </div>
                 </section>
                 <section className={`seccion-toggle relative ${!habilitarFormulario ? 'seccion-oculta' : ''}`}>
-                  <FormContact />
+                  <p onClick={handleChangeSeccion} className='text-decoration-underline link-secondary link-opacity-100-hover cursor-pinter-hover'>Regresar</p>
+                  <FormContact
+                    section={section}
+                    setSection={setSection}
+                  />
                 </section>
               </div>
             </div>
@@ -155,5 +175,8 @@ const Home = () => {
     </>
   );
 };
+
+// Tipos e interfaces
+type SecctionsNames = 'form' | 'info';
 
 export default Home;

@@ -79,6 +79,10 @@
     height: 100%
 }
 
+.cursor-pinter-hover:hover {
+    cursor: pointer;
+}
+
 //Manejo de el mapa para mobiles
 @media (max-width:991px) {
     #map-Desktop {

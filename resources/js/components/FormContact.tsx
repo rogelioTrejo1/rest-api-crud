@@ -1,6 +1,6 @@
 // Dependencias
 import Swal from 'sweetalert2';
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 
 // Hooks
 import { type CreateProspect, useProspect } from '@Hooks/useProspect';
@@ -9,7 +9,7 @@ import { type CreateProspect, useProspect } from '@Hooks/useProspect';
  *
  * @returns
  */
-function FormContact() {
+function FormContact({ section, setSection }: FormContactProps) {
   // Definición de hooks
   const { createProspect } = useProspect();
 
@@ -27,6 +27,16 @@ function FormContact() {
     phone: false,
     message: false
   });
+
+  useEffect(() => {
+    if (section === 'form')
+      setInvalidElements({
+        fullname: false,
+        email: false,
+        message: false,
+        phone: false
+      });
+  }, [section]);
 
   /**
    *
@@ -60,6 +70,7 @@ function FormContact() {
     Swal.fire('¡Enviado!', 'Tu mensaje fue recibido.', 'success');
 
     // Se establece reset del
+    setSection('info');
     setNewProspect({
       email: '',
       fullname: '',
@@ -158,7 +169,7 @@ function FormContact() {
         {/* Crear un boton chebox que autoriza el uso del telefono para comunicacion de whatsapp */}
         <button
           type="submit"
-          className="btn btn-lg btn-warning w-100"
+          className="btn btn-warning w-100"
         >
           Enviar
         </button>
@@ -168,7 +179,11 @@ function FormContact() {
 }
 
 // Definición de Interfaces y tipos
-type HandleInputChange = FormEvent<HTMLInputElement | HTMLTextAreaElement>
-type HandleFormSubmit = FormEvent<HTMLFormElement>
+type FormContactProps = {
+  section: 'form' | 'info';
+  setSection: (section: 'form' | 'info') => void
+};
+type HandleInputChange = FormEvent<HTMLInputElement | HTMLTextAreaElement>;
+type HandleFormSubmit = FormEvent<HTMLFormElement>;
 
 export default FormContact;
