@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./resources/js",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": [
@@ -18,7 +19,33 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@Components/*": [
+        "./components/*"
+      ],
+      "@Config/*": [
+        "./config/*"
+      ],
+      "@Css/*": [
+        "./css/*"
+      ],
+      "@Hooks/*": [
+        "./hooks/*"
+      ],
+      "@Images/*": [
+        "./images/*"
+      ],
+      "@Services/*": [
+        "./services/*"
+      ],
+      "@Util/*": [
+        "./util/*"
+      ]
+    }
   },
   "include": [
     "resources/js"

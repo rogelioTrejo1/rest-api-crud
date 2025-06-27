@@ -1,14 +1,14 @@
 // Dependencias
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 // Imagenes
-import logo from '../images/logo.png';
+import logo from '@Images/logo.png';
 
 // Utileria
-import { formatNumber } from '../util/formatNumber.util';
+import { formatNumber } from '@Util/formatNumber.util';
 
-import { useEmployee } from '../hooks/useEmployee';
+import { useEmployee } from '@Hooks/useEmployee';
 
 // Dependencias
 export default function TargetaPresentacion() {
@@ -17,7 +17,7 @@ export default function TargetaPresentacion() {
 
   // Hooks
   const location = useLocation();
-  const { employee } = useEmployee(location.search);
+  const { employee, error: errorEmployee } = useEmployee(location.search);
 
   // Función para manejar el flip de la tarjeta
   const handleFlip = () => setIsFlipped(!isFlipped);
@@ -39,8 +39,14 @@ export default function TargetaPresentacion() {
               <div className="h-100">
                 <p className='h1 text-warning text-center'>Electroservicios Industriales y suministros</p>
                 <div className='container-service clapText mb-3'>
-                  <p className='text-center'>{employee?.prefix}. {employee?.fullname}</p>
-                  <p className='text-center'>{employee?.text}</p>
+                  {
+                    (!errorEmployee || employee) && (
+                      <>
+                        <p className='text-center'>{employee?.prefix}. {employee?.fullname}</p>
+                        <p className='text-center'>{employee?.text}</p>
+                      </>
+                    )
+                  }
                 </div>
                 <div className='container-service clapText mb-3'>
                   <p>Gaspar de la Fuente #317</p>
@@ -52,7 +58,11 @@ export default function TargetaPresentacion() {
             <div className="col-6">
               <div className="container-service clapText">
                 <p>Email</p>
-                <p><a href={`mailto:${employee?.email}`}>{employee?.email}</a></p>
+                {
+                  (!errorEmployee || employee) && (
+                    <p><a href={`mailto:${employee?.email}`}>{employee?.email}</a></p>
+                  )
+                }
                 <p><a href="mailto:contacto@electroserviciosind.com">contacto@electroserviciosind.com</a></p>
               </div>
             </div>
@@ -62,14 +72,27 @@ export default function TargetaPresentacion() {
                   Oficina:
                   <a className='text-decoration-none ms-1' href="tel:+524491584409">158-44-09</a>
                 </p>
-                <p className='text-end'>
-                  Celular 1:
-                  <a className='text-decoration-none ms-1' href={`tel:+52${employee?.phone}`}>{formatNumber(employee?.phone!)}</a>
-                </p>
-                <p className='text-end'>
-                  Celular 2:
-                  <a className='text-decoration-none ms-1' href="tel:+524492695686">449-269-5686</a>
-                </p>
+                {
+                  !errorEmployee || employee
+                    ? (
+                      <>
+                        <p className='text-end'>
+                          Celular 1:
+                          <a className='text-decoration-none ms-1' href={`tel:+52${employee?.phone}`}>{formatNumber(employee?.phone)}</a>
+                        </p>
+                        <p className='text-end'>
+                          Celular 2:
+                          <a className='text-decoration-none ms-1' href="tel:+524492695686">449-269-5686</a>
+                        </p>
+                      </>
+                    )
+                    : (
+                      <p className='text-end'>
+                        Celular:
+                        <a className='text-decoration-none ms-1' href="tel:+524492695686">449-269-5686</a>
+                      </p>
+                    )
+                }
               </div>
             </div>
           </div>

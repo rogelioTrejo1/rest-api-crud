@@ -1,14 +1,23 @@
+// Keys
+import { API_REST } from '@Config/keys.config';
+
+// Interfaces y Tipos
+import { ApiResponse } from '@Services/interface/ApiResponce';
+
+// Definción de variables globales 
+const URL_API = `${API_REST}/employees`;
+
 /**
  *
  * @returns
  */
-export function getAllEmployees(): Promise<Employee[]> {
-  return fetch('/people.json')
-  .then(resp => {
-    if (!resp.ok) throw new Error('Error al traer los datos');
+export async function getAllEmployees(): Promise<ApiResponse<Employee[]>> {
+  const resp = await fetch(URL_API);
 
-    return resp.json();
-  })
+  if (!resp.ok)
+    throw new Error('Error al realizar la petición');
+
+  return resp.json();
 }
 
 /**
@@ -16,12 +25,14 @@ export function getAllEmployees(): Promise<Employee[]> {
  * @param id
  * @returns
  */
-export async function getEmployeesById(id: number): Promise<Employee> {
-  const employees = await getAllEmployees();
+export async function getEmployeesById(id: number): Promise<ApiResponse<Employee>> {
+  const resp = await fetch(`${URL_API}/${id}`);
 
-  console.log(employees)
-  
-  return employees.find(employee=> employee.id === id) || employees[0];
+  if (!resp.ok) {
+    throw new Error('Error al realizar la petición');
+  }
+
+  return resp.json();
 }
 
 // Tipos e Interfaces

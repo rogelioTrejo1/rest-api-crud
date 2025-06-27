@@ -1,24 +1,35 @@
 // Dependencias
-import { useState } from "react";
+import { useEffect, useState } from 'react';
 
 // Services
-import pensamientos from "../services/pensamientos.service";
-import { ingElectromecanica, serviIndustrial } from "../services/servicios.service";
+import pensamientos from '@Services/pensamientos.service';
+import { ingElectromecanica, serviIndustrial } from '@Services/servicios.service';
 
 // Componentes
-import Header from "../components/Header";
-import { Img, IFrame, Pensamientos, Servicio } from "../components/Components";
+import Header from '@Components/Header';
+import { Img, IFrame, Pensamientos, Servicio } from '@Components/Components';
 
 //Imagenes
-import LogoPrincipal from "../images/LogotipoFinal.png";
+import LogoPrincipal from '@Images/LogotipoFinal.png';
+import FormContact from '@Components/FormContact';
 
 const Home = () => {
   // Manejo del Estado de la aplicación
   const [fecha] = useState(new Date());
   const [habilitarFormulario, setHabilitarFormulario] = useState(false);
+  const [section, setSection] = useState<SecctionsNames>('info');
 
-  const handleClickSección = () => setHabilitarFormulario(!habilitarFormulario);
+  // Habilita el formulario, simprey cuando este en la seccion correspondiente
+  useEffect(() => setHabilitarFormulario(section === 'form'), [section]);
 
+  /**
+   *
+   * @returns
+   */
+  const handleChangeSeccion = () => {
+    setSection(prevState => prevState === 'info' ? 'form' : 'info');
+    setHabilitarFormulario(!habilitarFormulario);
+  };
 
   return (
     <>
@@ -87,14 +98,11 @@ const Home = () => {
         {/* Contacto! */}
         <article className="container-fluid" id="Contacto">
           <p className="h3 titulos">Contacto</p>
-          <div className="row mx-2">
+          <div className="row mx-2" style={{ minHeight: '675px' }}>
             <div className="col-lg-5 my-5">
               <div className="w-100">
                 <p className="h3 text-center">
                   Comunicate con nosotros
-                  {/* <button onClick={handleClickSección} className="btn btn-secondary btn-sm ms-1">
-                                    <i className="bi bi-arrow-repeat icon-rotate fs-6"></i>
-                                </button> */}
                 </p>
                 <section className={`seccion-toggle ${habilitarFormulario ? 'seccion-oculta' : ''}`}>
                   <p className="text-center">Gaspar de la Funte #317 Villas de Nuestra Señora de la Asunción, aguascalientes, Aguacalientes, México</p>
@@ -112,7 +120,7 @@ const Home = () => {
                   </p>
                   <p className="h3 text-center">Servicio Industrial</p>
                   <p className="text-center">Estamos a sus ordenes la 24 horas del dia, los 365 dias del año.</p>
-                  <div className="form-group">
+                  <div className="mb-3">
                     <p className="h3 text-center">Horario de Oficina</p>
                     <select className="form-control border-0" defaultValue={fecha.getDay()}>
                       <option value="1">Lunes. 9:00-18:00</option>
@@ -124,64 +132,22 @@ const Home = () => {
                       <option value="0">Domingo. Cerrado</option>
                     </select>
                   </div>
-                </section>
-                <section className={`seccion-toggle ${!habilitarFormulario ? 'seccion-oculta' : ''}`}>
-                  <form id="form-contact">
-                    <div className="mb-3">
-                      <label htmlFor="floatingEmail" className="form-label">Correo electrónico</label>
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="floatingEmail"
-                        placeholder="Escribe tu correo electrónico"
-                        autoComplete="off"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="floatingPassword" className="form-label">Telefono *</label>
-                      <input
-                        type="tel"
-                        className="form-control"
-                        id="floatingPassword"
-                        placeholder="Escribe tu telefono"
-                        autoComplete="off"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="floatingMessage" className="form-label">Mensaje *</label>
-                      <textarea
-                        name="message"
-                        id="floatingMessage"
-                        className="form-control"
-                        placeholder="Escribe en que te podemos ayudar"
-                        autoComplete="off"
-                        rows={5}
-                        required
-                      ></textarea>
-                    </div>
-                    <div className="mb-3">
-                      <div className="form-check form-switch mb-2">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="flexSwitchCheckDefault"
-                          required
-                        />
-                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
-                          ¿Autoriza el uso de su telefono para comunicacion de whatsapp?
-                        </label>
-                      </div>
-                      {/* Crear un boton chebox que autoriza el uso del telefono para comunicacion de whatsapp */}
-                      <button
-                        type="submit"
-                        className="btn btn-lg btn-warning w-100"
-                      >
-                        Enviar
+                  <div className='mb-3'>
+                    <p className='h4'>¿Tu empresa enfrenta algún reto? ¡Queremos escucharte!</p>
+                    <p>Sabemos que cada negocio es único y que los desafíos pueden aparecer en cualquier momento. En <span className='fw-bold fst-italic'>Electroservicios Industriales y Suministros</span>, estamos comprometidos en ayudarte a encontrar soluciones reales y efectivas.</p>
+                    <div className='d-flex justify-content-center'>
+                      <button onClick={handleChangeSeccion} className="btn btn-outline-warning w-75">
+                        Enviar un mensage
                       </button>
                     </div>
-                  </form>
+                  </div>
+                </section>
+                <section className={`seccion-toggle relative ${!habilitarFormulario ? 'seccion-oculta' : ''}`}>
+                  <p onClick={handleChangeSeccion} className='text-decoration-underline link-secondary link-opacity-100-hover cursor-pinter-hover'>Regresar</p>
+                  <FormContact
+                    section={section}
+                    setSection={setSection}
+                  />
                 </section>
               </div>
             </div>
@@ -209,5 +175,8 @@ const Home = () => {
     </>
   );
 };
+
+// Tipos e interfaces
+type SecctionsNames = 'form' | 'info';
 
 export default Home;
