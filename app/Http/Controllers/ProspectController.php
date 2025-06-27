@@ -12,11 +12,18 @@ class ProspectController extends Controller
 {
     use ApiResponse;
 
+    /**
+     *
+     */
     public function index()
     {
         return $this->success(Prospect::all());
     }
 
+    /**
+     * @param Request $request
+     * @return
+     */
     public function store(Request $request)
     {
         try {
@@ -40,5 +47,21 @@ class ProspectController extends Controller
                 'exception' => $e->getMessage()
             ]);
         }
+    }
+
+    /**
+     *
+     */
+    public function updateCommunication($id)
+    {
+        $prospect = Prospect::find($id);
+
+        if (!$prospect)
+            return $this->error("Prospecto no encontrado", 404);
+
+        $prospect->communication = true;
+        $prospect->save();
+
+        return $this->success($prospect, 200, "Prospecto actualizado");
     }
 }
